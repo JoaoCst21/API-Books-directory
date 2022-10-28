@@ -1,0 +1,26 @@
+{
+  "name": "api-books-directory",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000A\u0000P\u0000I\u0000-\u0000B\u0000o\u0000o\u0000k\u0000s\u0000-\u0000d\u0000i\u0000r\u0000e\u0000c\u0000t\u0000o\u0000r\u0000y\u0000\r\u0000 \u0000",
+  "main": "./src/system/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoaoCst21/API-Books-directory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoaoCst21/API-Books-directory/issues"
+  },
+  "homepage": "https://github.com/JoaoCst21/API-Books-directory#readme",
+  "dependencies": {
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
