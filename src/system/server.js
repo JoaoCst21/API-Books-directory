@@ -4,7 +4,7 @@ import routerBook from "../routes/book.routes.js";
 import routerUser from "../routes/user.routes.js";
 import routerBookmarked from "../routes/bookMarkedBooks.routes.js";
 
-const PORT = process.env | 3000;
+const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
   app.handle(req, res);
