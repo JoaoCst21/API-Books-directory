@@ -1,7 +1,10 @@
-DROP DATABASE IF EXISTS books_directory;
-CREATE DATABASE books_directory;
+DROP
+    DATABASE IF EXISTS heroku_9a3b3cb0ffdbe76;
+CREATE
+    DATABASE heroku_9a3b3cb0ffdbe76;
 
-USE books_directory;
+USE
+    heroku_9a3b3cb0ffdbe76;
 
 CREATE TABLE `User`
 (

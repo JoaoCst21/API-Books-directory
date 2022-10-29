@@ -1,6 +1,7 @@
 import { pool } from "../model/DAO/connection.js";
 
 const getAll = async (req, res) => {
+  console.log("it works");
   const [[data]] = await pool.execute("call sp_book_readall()");
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data, "", 2));

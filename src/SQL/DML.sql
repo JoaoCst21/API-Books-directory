@@ -1,5 +1,5 @@
 # DML
-USE books_directory;
+USE heroku_9a3b3cb0ffdbe76;
 
 # DML book(title, author, description, pages, release_date)
 CALL sp_book_create('The Lord of the Rings', 'J.R.R. Tolkien',
