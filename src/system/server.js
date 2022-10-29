@@ -34,6 +34,9 @@ console.log(routerBookmarked);
 app.useRoute("/user", routerUser);
 app.useRoute("/book", routerBook);
 app.useRoute("/bookmarked", routerBookmarked);
+app.get("/", (req, res) => {
+  res.end("WORKS");
+});
 // app.get("*", (req, res) => {
 //   res.writeHead(404);
 //   res.end("NOT FOUND");
