@@ -4,14 +4,14 @@ const use = function (fn) {
 };
 
 // creates a subRouter to handle Request from a specific route
-const useRoute = function (prefix, router) {
-  this.arrMiddleware.push((req, res) => {
+const useRoute = async function (prefix, router) {
+  this.arrMiddleware.push(async (req, res) => {
     if (!req.url.startsWith(prefix)) return;
 
     const url = req.url.slice(prefix.length);
     if (url.startsWith("/") || url === "") {
       req.url = req.url.slice(prefix.length) || "/";
-      router.handle(req, res);
+      await router.handle(req, res);
     }
   });
 };
