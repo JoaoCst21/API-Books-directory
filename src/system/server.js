@@ -12,6 +12,12 @@ const server = http.createServer((req, res) => {
 });
 
 // Middleware
+const cors = (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
+  res.setHeader("Access-Control-Max-Age", 2592000); // 30 days
+};
+
 const waitData = (req) => {
   return new Promise((resolve, reject) => {
     let body = "";
@@ -24,6 +30,9 @@ const waitData = (req) => {
     });
   });
 };
+
+app.use(cors);
+
 app.use(async (req) => {
   if (req.method === "POST" || req.method === "PUT") await waitData(req);
 });
