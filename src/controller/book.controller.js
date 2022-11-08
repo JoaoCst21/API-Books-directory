@@ -1,14 +1,12 @@
 import { pool } from "../model/DAO/connection.js";
 
 const getAll = async (req, res) => {
-  console.log("it works");
   const [[data]] = await pool.execute("call sp_book_readall()");
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data, "", 2));
 };
 
 const get = async (req, res) => {
-  console.log(req.params, "params");
   const [[[data]]] = await pool.execute("call sp_book_read(?)", [
     req.params.id,
   ]);
@@ -27,8 +25,6 @@ const create = async (req, res) => {
     return res.end(JSON.stringify({ error: "Missing data" }));
   }
 
-  console.log(title, author, description, releaseDate, pages);
-  console.log(new Date(releaseDate), "releaseDate", { releaseDate });
   await pool.execute("call sp_book_create(?, ?, ?, ?, ?)", [
     title,
     author,
@@ -36,7 +32,6 @@ const create = async (req, res) => {
     pages,
     new Date(releaseDate),
   ]);
-  console.log("Book created");
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(req.body, "", 2));
 };

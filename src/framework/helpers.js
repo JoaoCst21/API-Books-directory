@@ -9,11 +9,11 @@ const checkIfParamsValid = (arrRegex, arrUrl, url) => {
 
 const createObjectParams = (arrRegex, arrUrl, params) => {
   const objParams = {};
-  arrRegex
-    .filter((regex) => regex.startsWith(":"))
-    .forEach((regex, index) => {
-      objParams[params[index]] = arrUrl[index];
-    });
+  const value = arrRegex.filter((regex) => regex.startsWith(":"));
+  params.forEach((param, i) => {
+    const index = arrRegex.findIndex((route) => route.startsWith(":"));
+    objParams[params[i]] = arrUrl[index];
+  });
   return objParams;
 };
 

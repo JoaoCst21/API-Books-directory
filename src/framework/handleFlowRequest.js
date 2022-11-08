@@ -11,7 +11,6 @@ const handle = async function (req, res) {
 
     for (const { regex, isRegex, params } of this.arrRegex[req.method]) {
       let newRegex = regex;
-
       // if there are params in the regex, store them in the req.params object
       if (params) {
         const arrUrl = req.url.split("/").slice(1);
@@ -20,7 +19,6 @@ const handle = async function (req, res) {
         // if the number of params in the regex is not equal to the number of params in the url
         // then the request is not valid, and it will go to the next regex
         if (arrRegex.length !== arrUrl.length) continue;
-
         // if the route is not a regex, then it will replace the params
         // with the url params and check if the new regex is equal to the url
         // if it is not equal then the request is not valid, and it will go to the next regex

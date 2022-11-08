@@ -49,13 +49,10 @@ const destroy = async (req, res) => {
 };
 
 const searchByUser = async (req, res) => {
-  console.log("-----------------------------------------------------------");
   const { id } = req.params;
-  console.log({ id });
   const [[data]] = await pool.execute("call sp_bookmarkedbooks_search(?)", [
     id,
   ]);
-  console.log(data);
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data, "", 2));
 };

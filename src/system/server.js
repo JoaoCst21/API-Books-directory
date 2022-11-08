@@ -15,7 +15,10 @@ const server = http.createServer((req, res) => {
 const cors = (req, res) => {
   try {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "OPTIONS, GET, PUT, POST, DELETE"
+    );
     res.setHeader("Access-Control-Max-Age", 2592000); // 30 days
   } catch (e) {
     console.error("-------------------------------");
@@ -42,8 +45,6 @@ app.use(cors);
 app.use(async (req) => {
   if (req.method === "POST" || req.method === "PUT") await waitData(req);
 });
-
-console.log(routerBookmarked);
 
 // routes
 app.useRoute("/user", routerUser);

@@ -22,7 +22,6 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   const { id } = req.params;
   const { name, lastName, email, password } = req.body;
-  console.log(typeof id);
   const [[[data]]] = await pool.execute("call sp_user_read(?)", [id]);
   await pool.execute("call sp_user_update(?, ?, ?, ?, ?)", [
     id,
