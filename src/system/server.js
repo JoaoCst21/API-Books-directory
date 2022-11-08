@@ -13,9 +13,15 @@ const server = http.createServer((req, res) => {
 
 // Middleware
 const cors = (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
-  res.setHeader("Access-Control-Max-Age", 2592000); // 30 days
+  try {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
+    res.setHeader("Access-Control-Max-Age", 2592000); // 30 days
+  } catch (e) {
+    console.error("-------------------------------");
+    console.error("CORS NOT WORKING");
+    console.error("-------------------------------");
+  }
 };
 
 const waitData = (req) => {
@@ -43,9 +49,9 @@ console.log(routerBookmarked);
 app.useRoute("/user", routerUser);
 app.useRoute("/book", routerBook);
 app.useRoute("/bookmarked", routerBookmarked);
-app.get("/", (req, res) => {
-  res.end("WORKSssssssssssss");
-});
+// app.get("/", (req, res) => {
+//   res.end("WORKSssssssssssss");
+// });
 // app.get("*", (req, res) => {
 //   res.writeHead(404);
 //   res.end("NOT FOUND");
