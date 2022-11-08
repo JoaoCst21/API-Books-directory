@@ -43,10 +43,28 @@ const destroy = async (req, res) => {
   const [[[data]]] = await pool.execute("call sp_bookMarkedBooks_read(?)", [
     id,
   ]);
-  await pool.execute("call sp_bookMarkedBooks_delete(?)"[id]);
+  await pool.execute("call sp_bookMarkedBooks_delete(?)", [id]);
   res.writeHead(200, { "Content=Type": "application/json" });
   res.end(JSON.stringify(data, "", 2));
 };
 
-const controller = { getAll, create, update, delete: destroy, get };
+const searchByUser = async (req, res) => {
+  console.log("-----------------------------------------------------------");
+  const { id } = req.params;
+  console.log({ id });
+  const [[data]] = await pool.execute("call sp_bookmarkedbooks_search(?)", [
+    id,
+  ]);
+  console.log(data);
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify(data, "", 2));
+};
+const controller = {
+  getAll,
+  create,
+  update,
+  delete: destroy,
+  get,
+  searchByUser,
+};
 export default controller;

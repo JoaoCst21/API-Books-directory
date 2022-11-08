@@ -11,4 +11,6 @@ router
   .put(controller.update)
   .delete(controller.delete);
 
+router.route("/user/:id").get(controller.searchByUser);
+
 export default router;
