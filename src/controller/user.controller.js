@@ -51,5 +51,15 @@ const get = async (req, res) => {
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data));
 };
-const controller = { getAll, create, update, delete: destroy, get };
+
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  const [[[data]]] = await pool.execute("call sp_user_login(?, ?)", [
+    email,
+    password,
+  ]);
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify(data));
+};
+const controller = { getAll, create, update, delete: destroy, get, login };
 export default controller;

@@ -216,3 +216,16 @@ END;
 DELIMITER
 $$
 # -------------------------------------------------------
+DELIMITER ;
+CREATE PROCEDURE sp_user_login(
+    IN p_email VARCHAR(50),
+    IN p_password VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM user
+    WHERE email = p_email AND password = p_password;
+END;
+DELIMITER
+$$
+# -------------------------------------------------------
