@@ -7,6 +7,7 @@ const getAll = async (req, res) => {
 };
 
 const create = async (req, res) => {
+  console.log(req.body);
   const { idBook, idUser } = req.body;
   await pool.execute("call sp_bookMarkedBooks_create(?, ?)", [idUser, idBook]);
   res.writeHead(200, { "Content-Type": "application/json" });
@@ -44,7 +45,7 @@ const destroy = async (req, res) => {
     id,
   ]);
   await pool.execute("call sp_bookMarkedBooks_delete(?)", [id]);
-  res.writeHead(200, { "Content=Type": "application/json" });
+  res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data, "", 2));
 };
 

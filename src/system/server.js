@@ -15,11 +15,17 @@ const server = http.createServer((req, res) => {
 const cors = (req, res) => {
   try {
     res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.setHeader(
-      "Access-Control-Allow-Methods",
-      "OPTIONS, GET, PUT, POST, DELETE"
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
     );
     res.setHeader("Access-Control-Max-Age", 2592000); // 30 days
+    if (req.method === "OPTIONS") {
+      res.writeHead(204);
+      res.end();
+      return;
+    }
   } catch (e) {
     console.error("-------------------------------");
     console.error("CORS NOT WORKING");

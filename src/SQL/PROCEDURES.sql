@@ -114,7 +114,7 @@ CREATE PROCEDURE sp_book_update(
     IN p_id INT,
     IN p_title VARCHAR(50),
     IN p_author VARCHAR(50),
-    IN p_description VARCHAR(50),
+    IN p_description VARCHAR(2000),
     IN p_pages INT,
     IN p_release_date DATE
 )

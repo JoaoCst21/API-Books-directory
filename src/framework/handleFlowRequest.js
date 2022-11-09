@@ -41,7 +41,7 @@ const handle = async function (req, res) {
     console.error("HANDLE ERROR");
     console.error("-------------------------");
 
-    res.end(JSON.stringify({ error: "not found" }));
+    // res.end(JSON.stringify({ error: "not found" }));
   }
 };
 

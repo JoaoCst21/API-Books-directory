@@ -24,6 +24,7 @@ const create = async (req, res) => {
     res.writeHead(404, { "Content-Type": "application/json" });
     return res.end(JSON.stringify({ error: "Missing data" }));
   }
+  console.log({ releaseDate, newDate: new Date(releaseDate) });
 
   await pool.execute("call sp_book_create(?, ?, ?, ?, ?)", [
     title,
